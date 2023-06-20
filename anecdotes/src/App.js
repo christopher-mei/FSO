@@ -11,26 +11,49 @@ const App = () => {
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.',
     'The only way to go fast, is to go well.'
   ]
-   
-  const [selected, setSelected] = useState(0)
-  
   var total = anecdotes.length ;
-  
+
+  const [selected, setSelected] = useState(0)
+  const [votes, setVotes] = useState(new Array(total).fill(0) )
+
+  const mostVotes = Math.max(...votes)
+  console.log("the most votes " + mostVotes)
+  const indexOfLargest = votes.indexOf(mostVotes)
+  console.log("index of most votes  " + indexOfLargest)
+
   const randomInt = (total) => {
     return getRandomInt(total)
   }
 
-  const RandomAnec = () => {
-    const newAnec = randomInt(total)
+  const handleNext= () => {
+    var newAnec = randomInt(total)
     setSelected(newAnec)
+    console.log("random integer is " + newAnec)
+    console.log("votes" + votes[newAnec] )
   }
   
-  console.log("random int is " + randomInt(total))
-
+  const handleVote = () =>{
+    const newVotes = [...votes];
+      newVotes[selected] += 1;
+    setVotes(newVotes)
+    console.log( " the new vote count is " + {votes:selected} )
+  }
+  ////////////////////////////////
+  // here is what app will render //
+  ////////////////////////////////
   return (
     <div>
-      {anecdotes[selected]}
-      <Button text="next anecdote" onClick={RandomAnec}/>
+      <h1>Anecdote of the day </h1>
+      {anecdotes[selected]}<br/>
+      has {votes[selected]} vote(s)
+      <Button text="vote" onClick={handleVote}/>
+      <Button text="next anecdote" onClick={handleNext}/>
+      <h1>Anecdote with most votes </h1>
+      {anecdotes[indexOfLargest]} <br/>
+
+      has {mostVotes} votes
+
+
     </div>
   )
 }
