@@ -22,11 +22,9 @@ const Course = ({parts,name}) => {
 */
     return (
         <div>
-            <h1> -------course component--------</h1>
             <Header course = {name} />
             <Content parts = {parts}/>
-            number of exerciese {sumWithInitial}
-            <h1> -------course component--------</h1>
+     
         </div>
     )
 }
