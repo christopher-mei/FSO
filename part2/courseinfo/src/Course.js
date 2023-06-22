@@ -7,24 +7,23 @@ import Header from './Header'
 const Course = ({parts,name}) => {
 
     // me trying to use reduce to sum up the exercises lol 
-    /*
-   const exArray = []
+    
+   const exercisesArray = []
 
-    parts.map(part => 
-        exArray.concat(part.exercises) 
-        console.log(fds)
-        )
+    Array.from(parts, x => exercisesArray.push(x.exercises) )
+        
+        
    
-    console.log(exArray)
+    console.log(exercisesArray)
    
     const initialValue = 0;
-    const sumWithInitial = exArray.reduce((accumulator, currentValue) => accumulator + currentValue, initialValue);
-*/
+    const sumWithInitial = exercisesArray.reduce((accumulator, currentValue) => accumulator + currentValue, initialValue);
+
     return (
         <div>
             <Header course = {name} />
             <Content parts = {parts}/>
-     
+            <h4>total of {sumWithInitial} exercises</h4>
         </div>
     )
 }

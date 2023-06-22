@@ -5,7 +5,6 @@ import Course from './Course'
 
 const App = () => {
 
-
 const courses = [
   {
     name: 'Half Stack application development',
@@ -51,48 +50,15 @@ const courses = [
   }
 ]
 
-
-
-
   return (
     <div>
-      
-      
+      <h1> Web development curriculum</h1>
         {courses.map(course => 
           <div key={course.id}>
           <Course parts={course.parts} name={course.name} />
-           
           </div>
-        )}
-      
-      
-
-      
-      
-      
+        )} 
     </div>
   );
 }
-
-/*
-
-const Part = ({course}) => {
-  return (
-    <div>
-    <p> {course.name} {course.exercises}</p> 
-    </div>
-  )
-}
-
-const Total = ({parts}) => {
-  return (
-    <div>
-    <p> Number of exercises { parts[0].exercises + parts[1].exercises + parts[2].exercises   }</p>  
-    </div>
-  )
-}
-
-*/
 export default App
-
-// {parts.map(part => <li > {part.name} {part.exercises} </li>)}
